@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Workclay</title><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#EAF2FF"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Workclay"><meta name="format-detection" content="telephone=no"><title>Workclay</title><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>
 :root{--pg:#EAF2FF;--sf:#fff;--fd:#F2F7FF;--dv:#D6E4FB;--tx:#1c398e;--mu:#53669F;--pr:#2F6FEA;--ps:#DBEAFE;--pt:#1D4ED8;--ns:#DDE8FA;--sh:10px 10px 26px rgba(80,100,190,.22),-8px -8px 20px #fff;--s2:5px 5px 12px rgba(80,100,190,.2),-4px -4px 10px #fff;--in:inset 4px 4px 9px rgba(80,100,190,.18),inset -4px -4px 9px #fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
 :root[data-theme=dark]{--pg:#0e1830;--sf:#16244a;--fd:#112042;--dv:#26396b;--tx:#dbe7ff;--mu:#9db2e6;--ps:#1d3a78;--pt:#9cc0ff;--ns:#1f3160;--sh:8px 8px 22px rgba(0,0,0,.5),-6px -6px 16px rgba(70,100,180,.1);--s2:4px 4px 10px rgba(0,0,0,.45),-3px -3px 8px rgba(70,100,180,.1);--in:inset 4px 4px 9px rgba(0,0,0,.45),inset -4px -4px 9px rgba(70,100,180,.1)}
 *{box-sizing:border-box;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0)}
@@ -194,6 +194,94 @@ input[type=file]::file-selector-button{font:600 13px/20px Inter,sans-serif;color
 .kb{display:flex!important;flex-direction:column;gap:16px;overflow:visible!important;scroll-snap-type:none;padding:4px 0 24px}
 .kc{flex:none!important;width:100%;display:grid!important;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px 14px;align-items:start}
 .kc>.ch,.kc>.mu,.kc>.pb,.kc>.em{grid-column:1/-1}
+
+/* ===== Mobile / touch (phones & small tablets) ===== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button,.b,.nv,[data-go],[data-act],[data-tab],[data-crm],input,select,textarea,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mlogo{display:none}
+@media(max-width:900px){
+ .app{min-height:100dvh;padding:12px max(12px,env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom,0)) max(12px,env(safe-area-inset-left));gap:0}
+ .pub{min-height:100dvh}
+ /* bottom tab bar: translucent layer, content scrolls under it */
+ .sb{position:fixed!important;left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:calc(8px + env(safe-area-inset-bottom,0));top:auto!important;height:auto!important;z-index:8;flex-direction:row;gap:2px;padding:6px!important;border-radius:28px!important;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-top:1px solid rgba(255,255,255,.6)}
+ :root[data-theme=dark] .sb{background:rgba(22,36,74,.72);border-top-color:rgba(255,255,255,.12)}
+ .sb::-webkit-scrollbar{display:none}
+ .sb>div:not(.nv){display:none}
+ .sb>.nv:nth-last-child(-n+2){display:none}
+ .sb .nv{flex:1 0 auto;min-width:64px;height:56px;flex-direction:column;justify-content:center;gap:2px;padding:4px 8px;border-radius:22px;font:600 11px/14px Inter,sans-serif;white-space:nowrap}
+ .sb .nv svg.i{width:22px;height:22px}
+ @media(prefers-reduced-transparency:reduce){.sb{background:var(--sf);-webkit-backdrop-filter:none;backdrop-filter:none}}
+ /* top bar */
+ .tb{height:auto!important;flex-wrap:wrap!important;margin-bottom:16px;gap:12px}
+ .mlogo{display:flex;margin:0;font-size:26px;line-height:30px;gap:10px;order:1}
+ .mlogo .orb{width:34px;height:34px}
+ .acct{order:2;margin-left:auto;gap:10px}
+ .sr{order:3;width:100%!important}
+ .bell{width:48px;height:48px}
+ .prof{padding:4px 12px 4px 4px}
+ .dd,.dd[style]{position:fixed!important;left:auto;right:max(12px,env(safe-area-inset-right));top:calc(env(safe-area-inset-top,0) + 68px)!important;width:min(320px,calc(100vw - 24px))!important;max-height:70dvh;overflow:auto;z-index:12}
+ /* headings & spacing */
+ h1{font-size:34px;line-height:38px}
+ h2{font-size:28px;line-height:32px}
+ .card{padding:18px}
+ .ph{align-items:flex-start;margin-bottom:16px}
+ .st{padding:16px}.st-n{font-size:36px;line-height:40px}
+ .stats{gap:12px;margin-bottom:16px}
+ .panels,.cg,.sg,.mg,.g2{grid-template-columns:1fr!important;gap:16px}
+ /* inputs: 16px stops iOS zoom-on-focus */
+ input,select,textarea{font-size:16px!important}
+ .b{height:52px;font-size:20px}
+ .sm,.b.sm{height:44px;min-width:44px}
+ .mvb{width:44px;height:44px}
+ .la{opacity:1!important}
+ /* tabs scroll sideways */
+ .tabs{display:flex;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs span{flex:none;white-space:nowrap}
+ .sg>.card:first-child{display:flex;overflow-x:auto;gap:4px;scrollbar-width:none}.sg>.card:first-child .nv{flex:none;white-space:nowrap}
+ /* toast above tab bar */
+ #tg{bottom:calc(96px + env(safe-area-inset-bottom,0));max-width:calc(100vw - 32px);width:max-content;text-align:center;border-radius:20px}
+ /* modals become bottom sheets */
+ .ov{align-items:end!important;place-items:end center;padding:0!important;animation:scrim .25s ease both}
+ .ov .card.ac{width:100%!important;max-height:88dvh;overflow:auto;border-radius:32px 32px 0 0!important;padding:28px 20px calc(24px + env(safe-area-inset-bottom,0))!important;animation:sheet .35s cubic-bezier(.32,.72,0,1) both}
+ .ov .card.ac::before{content:"";display:block;width:40px;height:5px;border-radius:99px;background:var(--dv);margin:-14px auto 14px}
+ @keyframes sheet{from{transform:translateY(100%)}to{transform:none}}@keyframes scrim{from{opacity:0}to{opacity:1}}
+ /* invoice wizard line items */
+ .li.lh{display:none}
+ .li{grid-template-columns:1fr 1fr 1fr 44px;row-gap:6px;margin-bottom:14px}.li>input:first-child{grid-column:1/-1}
+ .wz{padding:20px}.obc{padding:24px 18px}
+ /* messages */
+ .mg2{height:auto!important;gap:12px}
+ .cvl{display:flex;gap:8px;overflow-x:auto;padding:10px!important;scrollbar-width:none}.cvl .sr{display:none}
+ .cv{flex:none;width:210px}
+ .cvc{height:calc(100dvh - 340px);min-height:380px}
+ .mw .msg{max-width:84%}
+ .cmp{padding:12px 14px}
+ /* CRM */
+ #ctp,#csr{width:100%!important;flex:1 1 140px}
+ .kc{padding:14px!important}
+ /* landing */
+ .nav{margin:10px;padding:10px 14px}.nav>div:nth-child(2){display:none}.nav .b{height:44px;font-size:18px;padding:0 16px}
+ .hero{padding:16px}
+ #features,#how,.g4[style*="40px"]{padding-left:16px!important;padding-right:16px!important}
+ .toplg{top:calc(16px + env(safe-area-inset-top,0))}
+ .rcs{gap:14px}
+}
+/* tables become stacked cards on phones */
+@media(max-width:700px){
+ .tw{overflow-x:visible}
+ .tw table,.tw tbody{display:block}
+ .tw th{display:none}
+ .tw tr{display:block;padding:10px 2px;border-top:1px solid var(--dv)}
+ .tw tr:first-child{border:0;padding:0}
+ .tw td{display:flex;justify-content:space-between;align-items:center;gap:12px;border:0;padding:5px 8px;text-align:right}
+ .tw td::before{content:attr(data-l);color:var(--mu);font:700 12px/16px Inter,sans-serif;text-align:left;flex:none}
+ .tw td[data-l=""]::before,.tw td:first-child::before{content:none}
+ .tw td:first-child{justify-content:flex-start;text-align:left}
+ .tw tr[data-go]:active{background:var(--fd)}
+ .stats{grid-template-columns:repeat(2,1fr)!important}
+ .st-t{gap:8px}.st-l{font-size:11px}.st .chip{width:36px;height:36px}
+}
+@media(max-width:360px){.stats{grid-template-columns:1fr!important}}
+@media(hover:none){.lc:hover{transform:none}}
 </style></head><body><div id="app"></div><input type="file" id="fu" multiple hidden><div id="ov"></div><div id="tg" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script>window.WORKCLAY={url:'https://iraizodwncvmbybowtvi.supabase.co',key:'sb_publishable_R-JewbaH1TAYgCHV_YdsfA_k0gPxFyP'};</script><script>
 const $=s=>document.querySelector(s),v=i=>($('#'+i)||{}).value||'',fmt=n=>'₹'+n.toLocaleString('en-IN');
 const I={d:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',p:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>',c:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',i:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h8M8 17h8"/>',w:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',m:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',s:'<path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',h:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',b:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a2 2 0 0 0 3.4 0"/>',k:'<path d="M20 6 9 17l-5-5"/>',u:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',x:'<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>',v:'<path d="m6 9 6 6 6-6"/>'};
@@ -226,7 +314,7 @@ const modal=(t,b,ok,a,cl)=>S.m=`<div class="ov"><div class="card ac"><div class=
 const explain=x=>{const m=(x&&x.message)||String(x==null?'':x);if(/rate limit|error sending|sending (confirmation|recovery|magic)|smtp/i.test(m))return'Supabase could not send the email. Turn on custom SMTP (Authentication \u2192 Emails \u2192 SMTP Settings) or switch off \u201cConfirm email\u201d, then try again.';if(/bucket not found/i.test(m))return'Storage bucket “project-files” is missing. Run supabase-setup.sql in Supabase, then try again.';if(/row-level security/i.test(m))return'Supabase blocked this (row-level security). Run supabase-setup.sql, then try again.';if(/does not exist|schema cache|could not find the/i.test(m))return'Your database is missing something ('+m+'). Run supabase-setup.sql, then try again.';return m};
 const toast=(t,err)=>{const x=explain(t);if(x!==t)err=1;const e=$('#tg');e.textContent=x;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',err?7000:2400)};
 const nav=()=>[['dash','d','Dashboard'],['projects','p','Projects'],...(S.r=='f'?[['clients','c','Clients'],['crm','crm','CRM']]:[]),['invoices','i','Invoices'],['payments','w','Payments'],['messages','m','Messages']];
-const tbar=()=>`<div class="top tb"><div class="sr">${ic('q')}<input id="q" placeholder="Search..." aria-label="Search"></div><div class="acct"><button class="bell" data-act="dd:n" aria-label="Notifications">${ic('b')}</button><div class="prof" data-act="dd:u" tabindex="0"><span class="av">${esc((nm()||'?').trim().charAt(0))}</span><span>${esc(nm()||'Account')}</span>${ic('v')}</div></div>${S.dd=='n'?`<div class="card dd"><h3>Notifications</h3>${notifs().length?notifs().slice(0,4).map(n=>`<div class="row" data-go="${n.g}" style="cursor:pointer"><div><b>${esc(n.t)}</b><div class="mu">${esc(n.s)}</div></div></div>`).join('')+`<p style="margin-top:8px"><a style="color:var(--pt);font-weight:600;cursor:pointer" data-go="notifications">View all</a></p>`:'<p class="mu" style="margin-top:8px">You are all caught up. New activity shows up here.</p>'}</div>`:''}${S.dd=='u'?`<div class="card dd" style="width:240px"><div class="nv" data-go="profile">Profile</div><div class="nv" data-go="settings">Settings</div><div class="nv" data-go="help">Help & support</div><div class="nv" data-act="theme">Switch theme</div><div class="nv" data-act="lo">Log out</div></div>`:''}</div>`;
+const tbar=()=>`<div class="top tb"><div class="logo mlogo" data-go="dash"><i class="orb"></i><span>Workclay</span></div><div class="sr">${ic('q')}<input id="q" placeholder="Search..." aria-label="Search"></div><div class="acct"><button class="bell" data-act="dd:n" aria-label="Notifications">${ic('b')}</button><div class="prof" data-act="dd:u" tabindex="0"><span class="av">${esc((nm()||'?').trim().charAt(0))}</span><span>${esc(nm()||'Account')}</span>${ic('v')}</div></div>${S.dd=='n'?`<div class="card dd"><h3>Notifications</h3>${notifs().length?notifs().slice(0,4).map(n=>`<div class="row" data-go="${n.g}" style="cursor:pointer"><div><b>${esc(n.t)}</b><div class="mu">${esc(n.s)}</div></div></div>`).join('')+`<p style="margin-top:8px"><a style="color:var(--pt);font-weight:600;cursor:pointer" data-go="notifications">View all</a></p>`:'<p class="mu" style="margin-top:8px">You are all caught up. New activity shows up here.</p>'}</div>`:''}${S.dd=='u'?`<div class="card dd" style="width:240px"><div class="nv" data-go="profile">Profile</div><div class="nv" data-go="settings">Settings</div><div class="nv" data-go="help">Help & support</div><div class="nv" data-act="theme">Switch theme</div><div class="nv" data-act="lo">Log out</div></div>`:''}</div>`;
 const shell=(a,c)=>`<div class="app"><aside class="card sb"><div class="logo" data-go=""><i class="orb"></i><span>Workclay</span></div>${nav().map(n=>`<div class="nv ${n[0]==a?'on':''}" data-go="${n[0]}" tabindex="0">${ic(n[1])}${n[2]}</div>`).join('')}<div style="flex:1"></div><div class="nv ${a=='settings'?'on':''}" data-go="settings" tabindex="0">${ic('s')}Settings</div><div class="nv ${a=='help'?'on':''}" data-go="help" tabindex="0">${ic('h')}Help & Support</div></aside><main>${tbar()}${c}</main></div>`;
 const ago=t=>{if(!t)return'';const m=Math.max(1,Math.round((Date.now()-new Date(t))/6e4));return m<60?m+(m==1?' minute':' minutes')+' ago':m<1440?Math.round(m/60)+(Math.round(m/60)==1?' hour':' hours')+' ago':Math.round(m/1440)+(Math.round(m/1440)==1?' day':' days')+' ago'};
 const mdy=d=>{if(!d)return'';return new Date(d+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'})};
@@ -530,7 +618,8 @@ lo(){S.dd=null;modal('Log Out?','You will need to sign in again.','Log out','los
 }[k]||(()=>{}))();render();for(const id in keep){const e=$('#'+id);if(e&&!e.value)e.value=keep[id]}for(const id in kc){const e=$('#'+id);if(e&&e.type=='checkbox')e.checked=kc[id]}};
 const go=r=>{const h='#/'+r;location.hash==h?render():location.hash=h};
 const PUBL=['','pricing','login','signup','verify','out','forgot','sent','terms','privacy','404','error','expired','denied','invite'];
-function render(){const[p,a]=location.hash.slice(2).split('/');if(sb&&!S.user&&!PUBL.includes(p||''))return go('login');if(sb&&S.user&&!S.role&&!['onboard','out','verified','newpass'].includes(p||''))return go('onboard');if(sb&&S.user&&S.role&&['onboard','login','signup','verify'].includes(p||''))return go('dash');const f=V[p||''];$('#app').innerHTML=f?f(a):V.nf();$('#ov').innerHTML=S.m}
+function render(){const[p,a]=location.hash.slice(2).split('/');if(sb&&!S.user&&!PUBL.includes(p||''))return go('login');if(sb&&S.user&&!S.role&&!['onboard','out','verified','newpass'].includes(p||''))return go('onboard');if(sb&&S.user&&S.role&&['onboard','login','signup','verify'].includes(p||''))return go('dash');const f=V[p||''];$('#app').innerHTML=f?f(a):V.nf();$('#ov').innerHTML=S.m;mobTables()}
+const mobTables=()=>document.querySelectorAll('#app table').forEach(t=>{const h=[...t.querySelectorAll('th')].map(x=>x.textContent.trim());t.querySelectorAll('td').forEach(c=>c.setAttribute('data-l',h[c.cellIndex]||''))});
 document.addEventListener('click',e=>{const ey=e.target.closest('[data-eye]');if(ey){const i=document.getElementById(ey.dataset.eye);i.type=i.type=='password'?'text':'password';return}if(e.target.classList.contains('ov')){S.m='';return render()}
 const t=e.target.closest('[data-go],[data-act],[data-tab]');if(!t){if(S.dd&&!e.target.closest('.dd')){S.dd=null;render()}return}
 if(t.dataset.tab){const[k,i]=t.dataset.tab.split(':');S.tab[k]=+i;return render()}
