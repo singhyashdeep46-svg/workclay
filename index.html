@@ -282,6 +282,19 @@ a,button,.b,.nv,[data-go],[data-act],[data-tab],[data-crm],input,select,textarea
 }
 @media(max-width:360px){.stats{grid-template-columns:1fr!important}}
 @media(hover:none){.lc:hover{transform:none}}
+
+/* landing nav on phones: logo + buttons on one row, links as a swipe strip */
+@media(max-width:900px){
+ .nav{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:max(10px,env(safe-area-inset-top,0)) 10px 8px!important;padding:12px 14px!important;border-radius:28px!important}
+ .nav>b.lg{order:1;font-size:26px!important;line-height:30px}
+ .nav>div:last-child{order:2;gap:8px!important;flex-wrap:nowrap!important}
+ .nav>div:nth-child(2){order:3;display:flex!important;flex:1 0 100%;flex-wrap:nowrap!important;overflow-x:auto;gap:2px!important;scrollbar-width:none;border-top:1px solid var(--dv);padding-top:6px}
+ .nav>div:nth-child(2)::-webkit-scrollbar{display:none}
+ .nav .nv{flex:none;height:40px!important;padding:0 12px!important;white-space:nowrap;font-size:14px}
+ .nav .b{height:42px!important;font-size:18px!important;padding:0 16px!important}
+ .hero{padding:12px 16px 24px!important;gap:20px!important}
+ .hero h1{font-size:clamp(40px,12vw,64px)!important}
+}
 </style></head><body><div id="app"></div><input type="file" id="fu" multiple hidden><div id="ov"></div><div id="tg" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script>window.WORKCLAY={url:'https://iraizodwncvmbybowtvi.supabase.co',key:'sb_publishable_R-JewbaH1TAYgCHV_YdsfA_k0gPxFyP'};</script><script>
 const $=s=>document.querySelector(s),v=i=>($('#'+i)||{}).value||'',fmt=n=>'₹'+n.toLocaleString('en-IN');
 const I={d:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',p:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>',c:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',i:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h8M8 17h8"/>',w:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',m:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',s:'<path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',h:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',b:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a2 2 0 0 0 3.4 0"/>',k:'<path d="M20 6 9 17l-5-5"/>',u:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',x:'<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>',v:'<path d="m6 9 6 6 6-6"/>'};
