@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#EAF2FF"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Workclay"><meta name="format-detection" content="telephone=no"><title>Workclay</title><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#EAF2FF"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Workclay"><meta name="format-detection" content="telephone=no"><title>Workclay</title><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"><style>
 :root{--pg:#EAF2FF;--sf:#fff;--fd:#F2F7FF;--dv:#D6E4FB;--tx:#1c398e;--mu:#53669F;--pr:#2F6FEA;--ps:#DBEAFE;--pt:#1D4ED8;--ns:#DDE8FA;--sh:10px 10px 26px rgba(80,100,190,.22),-8px -8px 20px #fff;--s2:5px 5px 12px rgba(80,100,190,.2),-4px -4px 10px #fff;--in:inset 4px 4px 9px rgba(80,100,190,.18),inset -4px -4px 9px #fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
 :root[data-theme=dark]{--pg:#0e1830;--sf:#16244a;--fd:#112042;--dv:#26396b;--tx:#dbe7ff;--mu:#9db2e6;--ps:#1d3a78;--pt:#9cc0ff;--ns:#1f3160;--sh:8px 8px 22px rgba(0,0,0,.5),-6px -6px 16px rgba(70,100,180,.1);--s2:4px 4px 10px rgba(0,0,0,.45),-3px -3px 8px rgba(70,100,180,.1);--in:inset 4px 4px 9px rgba(0,0,0,.45),inset -4px -4px 9px rgba(70,100,180,.1)}
 *{box-sizing:border-box;margin:0}html{scroll-padding-top:env(safe-area-inset-top,0)}
@@ -395,6 +395,60 @@ input:not([type=checkbox],[type=radio]):focus,select:focus,textarea:focus{outlin
 .npill.go,.tpill.go{transition:none}
 .ov .card.ac,.more{animation-name:fade}.ov.out .card.ac{animation-name:fade-out}
 .b:hover,.bell:hover,.prof:hover,.lc:hover,.card[data-go]:hover{transform:none!important}}
+
+/* ===== Type & spacing system: one grotesk (Inter, optical sizes), 4px grid, 44px controls ===== */
+:root{--font:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:72px;--gap:20px;--ch:44px}
+html{font-optical-sizing:auto;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font:400 14px/20px var(--font);font-feature-settings:'cv11','calt','kern'}
+h1,h2,h3{font-family:var(--font);text-transform:none;text-wrap:balance;font-weight:650}
+h1{font-size:28px;line-height:34px;letter-spacing:-.025em}
+h2{font-size:20px;line-height:28px;letter-spacing:-.015em}
+h3{font-size:16px;line-height:24px;letter-spacing:-.01em;font-weight:600}
+p{text-wrap:pretty}
+.ac h1,.obw h1{font-size:32px;line-height:38px}
+.kc h3{font-size:15px;line-height:20px}
+.hero{padding:clamp(32px,6vw,88px) 40px;gap:var(--s7)}
+.hero h1{font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:-.04em;font-weight:600;max-width:13ch}
+.hero p{font-size:18px;line-height:28px;max-width:46ch}
+#features{margin-top:clamp(16px,4vw,56px);padding-bottom:clamp(48px,8vw,112px)!important}
+.g4,.g3{gap:var(--gap)}
+.app>main{width:100%;max-width:1320px;margin-inline:auto}
+.sb{padding:20px;gap:var(--s1)}.logo{margin-bottom:var(--s5)}
+.nv{height:var(--ch);padding:0 14px;font:500 14px/20px var(--font)}.nv.on{font-weight:600}
+.tb{height:var(--ch);margin-bottom:var(--s6)}.acct{gap:var(--s3)}
+.bell{width:var(--ch);height:var(--ch)}.prof{height:var(--ch);padding:4px 14px 4px 4px;font:600 14px/20px var(--font)}
+.av{width:36px;height:36px;font:600 15px/1 var(--font)}.ci{font:600 13px/1 var(--font);letter-spacing:0}
+.dd{top:56px}
+.b{height:var(--ch);padding:0 20px;font:600 14px/20px var(--font);letter-spacing:0;border-width:1.5px}
+.sm{height:36px;padding:0 14px;font-size:13px;line-height:18px}
+input,select,textarea{height:var(--ch);font:400 14px/20px var(--font);padding:0 18px}
+textarea{height:auto;padding:12px 18px;line-height:22px}
+input[type=file]{min-height:var(--ch)}
+.sr input,.fi input,.fi select{padding-left:46px}.sr .i,.fi>.i,.eye{top:12px}.sendb{width:var(--ch);min-width:var(--ch)}
+.f{font:600 13px/18px var(--font);gap:var(--s2);margin-bottom:var(--s5)}
+.pl{font:600 12px/16px var(--font);padding:4px 10px;letter-spacing:0}
+.tabs span{font:500 14px/20px var(--font);padding:8px 18px}.tabs .on{font-weight:600}
+.sub,.ft,.rm{font-size:13px;line-height:20px}.sub{margin:var(--s2) 0 var(--s5)}
+.card{padding:var(--s5)}.st{padding:20px 24px}.pn{gap:var(--s3)}
+.ph{margin-bottom:var(--s6)}.stats{gap:var(--gap);margin-bottom:var(--s6)}.panels,.cg,.sg,.mg2{gap:var(--gap)}.rcol{gap:var(--gap)}
+.st-n{font:600 32px/36px var(--font);letter-spacing:-.02em}
+.st-l{font:500 13px/18px var(--font);letter-spacing:0}.st-s{font:400 12px/16px var(--font)}
+.li2{padding:12px 0}.li2.s{padding:10px 0}.row{padding:14px 0}
+th{font:600 12px/16px var(--font);letter-spacing:0;padding:10px 12px}td{font:400 14px/20px var(--font);padding:14px 12px}
+.nav{padding:12px 24px;margin:var(--s4)}
+@media(max-width:700px){.st-n{font-size:28px;line-height:32px}}
+@media(max-width:900px){
+h1{font-size:26px;line-height:32px}
+.ph h1,.ph h2,.top:not(.tb) h1,.top:not(.tb) h2{font-size:24px;line-height:30px}
+.hero h1{font-size:clamp(38px,11vw,56px)!important}
+.b{height:48px;font-size:15px}
+.ph .b,.ph>.b,.ph>div>.b,.top:not(.tb)>.b,.top:not(.tb)>div>.b,.nav .b,.nav>div:last-child .b{height:44px!important;font-size:14px!important;padding:0 16px!important}
+.sb .nv,.sb .mnv{font:600 11px/14px var(--font)!important}
+.more .nv span{font:600 15px/22px var(--font)}
+.nav .nv{font-size:13px}
+input:not([type=checkbox],[type=radio],[type=file]),select{height:48px}
+.sr .i,.fi>.i,.eye{top:14px}.bell{width:48px;height:48px}.sendb{width:48px;min-width:48px;height:48px}
+.card{padding:20px}}
 </style></head><body><div id="app"></div><input type="file" id="fu" multiple hidden><div id="ov"></div><div id="tg" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script>window.WORKCLAY={url:'https://iraizodwncvmbybowtvi.supabase.co',key:'sb_publishable_R-JewbaH1TAYgCHV_YdsfA_k0gPxFyP'};</script><script>
 const $=s=>document.querySelector(s),v=i=>($('#'+i)||{}).value||'',fmt=n=>'₹'+n.toLocaleString('en-IN');
 const I={more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',d:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',p:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>',c:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',i:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h8M8 17h8"/>',w:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',m:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',s:'<path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',h:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',b:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a2 2 0 0 0 3.4 0"/>',k:'<path d="M20 6 9 17l-5-5"/>',u:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',x:'<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>',v:'<path d="m6 9 6 6 6-6"/>'};
@@ -549,7 +603,7 @@ const say=async(pid,body)=>{const p=S.pr.find(x=>x[5]==pid)||[];if(p[6]&&!S.mem.
 const invOf=a=>{const i=+a,n=S.inv[i];return n?[i,n,S.pr.find(p=>p[5]==n[6])||[]]:null};
 const msgCard=(i,t,s,b,f)=>A(i,t,s,b,f);
 /* ---- payments setup ---- */
-V.paysetup=()=>{if(S.r!='f')return V.nf();const ps=psRow(),pc=(n,d,ic2,on,btn)=>`<div class="card pn" style="gap:12px"><div class="li2 nb" style="cursor:default"><i class="chip t-sky">${ic(ic2)}</i><div class="t"><b style="font:600 20px/24px 'Barlow Condensed',sans-serif">${n}</b><span>${d}</span></div><span class="pl ${on?'ok':'ns'}">${on?'Connected':'Not connected'}</span></div><div style="display:flex;justify-content:flex-end">${btn}</div></div>`;
+V.paysetup=()=>{if(S.r!='f')return V.nf();const ps=psRow(),pc=(n,d,ic2,on,btn)=>`<div class="card pn" style="gap:12px"><div class="li2 nb" style="cursor:default"><i class="chip t-sky">${ic(ic2)}</i><div class="t"><b style="font:600 15px/22px Inter,sans-serif">${n}</b><span>${d}</span></div><span class="pl ${on?'ok':'ns'}">${on?'Connected':'Not connected'}</span></div><div style="display:flex;justify-content:flex-end">${btn}</div></div>`;
 return shell('payments',`<div class="ph" style="margin-bottom:8px"><div><h1>Payment Setup</h1><p class="mu" style="margin-top:4px">Connect a provider so clients can pay your invoices online.</p></div>${B('Add Provider','addprov','p')}</div><div style="height:16px"></div><div class="g2" style="grid-template-columns:1fr 1fr">${pc('Razorpay','Accept UPI, cards and net banking','w',!!ps.razorpay_link,B(ps.razorpay_link?'Manage':'Connect',ps.razorpay_link?'manage/razorpay':'razorpay','sm'))}${pc('Stripe','International card payments in 135+ currencies','lnk',!!ps.stripe_link,B(ps.stripe_link?'Manage':'Connect',ps.stripe_link?'manage/stripe':'prov/stripe','sm'))}${pc('PayPal','Get paid by clients around the world','n',!!ps.paypal_link,B(ps.paypal_link?'Manage':'Connect',ps.paypal_link?'manage/paypal':'prov/paypal','sm'))}${pc('Bank Transfer & UPI','Direct payouts to your bank account','bk',!!(ps.upi_id||ps.upi_phone||ps.qr||ps.bank),B(ps.upi_id||ps.upi_phone||ps.qr?'Manage':'Set up','upi',ps.upi_id||ps.upi_phone||ps.qr?'sm':'sm p'))}</div><p class="mu" style="margin-top:18px">Prefer bank details? <a style="color:var(--pt);font-weight:600;cursor:pointer" data-go="bank">Add a bank account</a></p>`)};
 V.razorpay=()=>{if(S.r!='f')return V.nf();const ps=psRow(),own=S.inv.map((x,i)=>[x,i]).filter(([x])=>S.pr.some(p=>p[5]==x[6]&&p[6])),t=S.tmp.rz||{},ap=t.ap||'all',ln=t.ln!=null?t.ln:(ap=='all'?(ps.razorpay_link||''):((S.inv[+ap]||[])[9]||{}).razorpay_link||'');
 return A('lnk','Razorpay Payment Link','Paste a payment link from your Razorpay dashboard so clients can pay you online.',SF('Apply to','rza','i',[['all','All my invoices (default)'],...own.map(([x,i])=>[String(i),x[0]+' \u00b7 '+x[1]])],ap).replace('<select id="rza"','<select id="rza" data-chg="rzr"')+IF('Payment link','rzl','lnk','url','https://rzp.io/l/yourlink',ln)+W(B('Save Link',0,'p','data-act="rzs"'))+W(B('Test Link',0,'','data-act="rzt"')),`<p class="ft">Need a link? <a href="https://dashboard.razorpay.com/app/payment-links" target="_blank" rel="noopener">Open Razorpay</a></p>`)};
@@ -604,7 +658,7 @@ V.denied=()=>A('shd','Access denied','You don\u2019t have permission to view thi
 V.loading=()=>shell('dash',`<div class="ph"><div class="sk" style="width:340px;height:44px"></div></div><div class="stats">${[1,2,3,4].map(()=>'<div class="card sk" style="height:150px"></div>').join('')}</div><div class="panels"><div class="card sk" style="height:300px"></div><div class="card sk" style="height:300px"></div></div>`);
 const prefs=()=>{try{return JSON.parse(localStorage.getItem('wc-pref')||'{}')}catch(e){return{}}};
 const SEL=(l,id,o,v2)=>`<label class="f">${l}<select id="${id}">${o.map(x=>`<option ${x==v2?'selected':''}>${x}</option>`).join('')}</select></label>`;
-const ROW=(i,t,d,btn)=>`<div class="ir"><i class="chip t-sky">${ic(i)}</i><div class="t"><b style="font:600 20px/24px 'Barlow Condensed',sans-serif">${t}</b><span class="mu" style="font-size:12px">${d}</span></div>${btn}</div>`;
+const ROW=(i,t,d,btn)=>`<div class="ir"><i class="chip t-sky">${ic(i)}</i><div class="t"><b style="font:600 15px/22px Inter,sans-serif">${t}</b><span class="mu" style="font-size:12px">${d}</span></div>${btn}</div>`;
 V.settings=()=>{const t=S.tab.st||0,M=[['Account','u'],['Notifications','b'],['Security','shd'],['Preferences','s'],['Integrations','clip'],['Billing','w']],md=(S.user||{}).user_metadata||{},ps=psRow(),pf=prefs();let c;
 if(t==0)c=`<h3 style="margin-bottom:12px">Account Settings</h3><div class="g2">${F('Full Name','n',esc(md.full_name||nm()||''))}<label class="f">Email Address<input value="${esc(S.e)}" readonly></label>${F('Phone Number','ph',esc(md.phone||''),'tel','+91 98765 43210')}${F('Company / Agency','co',esc(md.company||''))}</div><h3 style="margin:8px 0 12px">Change Password</h3><div class="g3">${IF('Current Password','cp','lk','password','Current password','',1)}${IF('New Password','p1','lk','password','New password','',1)}${IF('Confirm New Password','p2','lk','password','Confirm new password','',1)}</div><div style="display:flex;justify-content:flex-end">${B('Save Changes',0,'p','data-act="sva"')}</div>`;
 else if(t==1)c=`<h3 style="margin-bottom:12px">Notification Preferences</h3>`+[['inv','Invoice paid','Get notified when a client pays an invoice'],['od','Invoice overdue','Alert me when an invoice becomes overdue'],['msg','New messages','Email me when I get a new message'],['dl','Deliverable updates','Approvals and change requests on my projects'],['pr','Product updates','News and tips from Workclay']].map(x=>`<div class="row" style="border:0;align-items:center"><span><b>${x[1]}</b><div class="mu" style="font-size:12px">${x[2]}</div></span>${sw(S.nt[x[0]],'tg:'+x[0])}</div>`).join('');
