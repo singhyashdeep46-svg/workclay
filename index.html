@@ -195,77 +195,102 @@ input[type=file]::file-selector-button{font:600 13px/20px Inter,sans-serif;color
 .kc{flex:none!important;width:100%;display:grid!important;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px 14px;align-items:start}
 .kc>.ch,.kc>.mu,.kc>.pb,.kc>.em{grid-column:1/-1}
 
-/* ===== Mobile / touch (phones & small tablets) ===== */
+/* ===== Phone layout ===== */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-a,button,.b,.nv,[data-go],[data-act],[data-tab],[data-crm],input,select,textarea,summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.mlogo{display:none}
+a,button,.b,.nv,[data-go],[data-act],[data-tab],[data-crm],summary{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.mlogo,.mnv,.more,.more-scrim{display:none}
 @media(max-width:900px){
- .app{min-height:100dvh;padding:12px max(12px,env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom,0)) max(12px,env(safe-area-inset-left));gap:0}
+ html,body{overflow-x:hidden}
+ .app{grid-template-columns:minmax(0,1fr)!important;min-height:100dvh;gap:0;padding:12px max(16px,env(safe-area-inset-right)) calc(100px + env(safe-area-inset-bottom,0)) max(16px,env(safe-area-inset-left))}
+ main{min-width:0}
  .pub{min-height:100dvh}
- /* bottom tab bar: translucent layer, content scrolls under it */
- .sb{position:fixed!important;left:max(8px,env(safe-area-inset-left));right:max(8px,env(safe-area-inset-right));bottom:calc(8px + env(safe-area-inset-bottom,0));top:auto!important;height:auto!important;z-index:8;flex-direction:row;gap:2px;padding:6px!important;border-radius:28px!important;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-top:1px solid rgba(255,255,255,.6)}
- :root[data-theme=dark] .sb{background:rgba(22,36,74,.72);border-top-color:rgba(255,255,255,.12)}
- .sb::-webkit-scrollbar{display:none}
- .sb>div:not(.nv){display:none}
- .sb>.nv:nth-last-child(-n+2){display:none}
- .sb .nv{flex:1 0 auto;min-width:64px;height:56px;flex-direction:column;justify-content:center;gap:2px;padding:4px 8px;border-radius:22px;font:600 11px/14px Inter,sans-serif;white-space:nowrap}
- .sb .nv svg.i{width:22px;height:22px}
- @media(prefers-reduced-transparency:reduce){.sb{background:var(--sf);-webkit-backdrop-filter:none;backdrop-filter:none}}
- /* top bar */
- .tb{height:auto!important;flex-wrap:wrap!important;margin-bottom:16px;gap:12px}
- .mlogo{display:flex;margin:0;font-size:26px;line-height:30px;gap:10px;order:1}
+ /* --- bottom tab bar: equal-width tabs, nothing scrolls or clips --- */
+ .sb{position:fixed!important;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));bottom:calc(10px + env(safe-area-inset-bottom,0));top:auto!important;height:66px!important;z-index:20;flex-direction:row!important;align-items:stretch;gap:2px;padding:6px!important;border-radius:33px!important;overflow:visible!important;background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(22px) saturate(180%);backdrop-filter:blur(22px) saturate(180%);border-top:1px solid rgba(255,255,255,.7)}
+ :root[data-theme=dark] .sb{background:rgba(22,36,74,.74);border-top-color:rgba(255,255,255,.12)}
+ .sb .logo,.sb .sp,.sb .ft,.sb .nv.sec{display:none!important}
+ .sb .nv,.sb .mnv{flex:1 1 0;min-width:0;height:auto!important;padding:0 2px!important;flex-direction:column;justify-content:center;align-items:center;gap:3px!important;border-radius:27px!important;font:600 10px/12px Inter,sans-serif!important;text-align:center}
+ .sb .mnv{display:flex}
+ .sb .nv span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .sb .nv svg.i{width:23px;height:23px;flex:none}
+ .sb .nv:active{transform:scale(.94);transition:transform .1s ease-out}
+ /* --- More sheet --- */
+ .more-scrim{display:block;position:fixed;inset:0;z-index:18;background:rgba(15,30,70,.18)}
+ .more{display:block;position:fixed;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));bottom:calc(86px + env(safe-area-inset-bottom,0));z-index:19;padding:8px;border-radius:28px;transform-origin:bottom right;animation:mpop .3s cubic-bezier(.32,.72,0,1) both}
+ .more .nv{height:52px;padding:0 16px;gap:14px;border-radius:20px}
+ .more .nv span{font:600 16px/22px Inter,sans-serif}
+ .more hr{border:0;border-top:1px solid var(--dv);margin:6px 8px}
+ @keyframes mpop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+ /* --- top bar --- */
+ .tb{height:auto!important;flex-wrap:wrap!important;gap:12px;margin-bottom:16px}
+ .mlogo{display:flex;order:1;margin:0;gap:10px;font-size:26px;line-height:30px;cursor:pointer}
  .mlogo .orb{width:34px;height:34px}
  .acct{order:2;margin-left:auto;gap:10px}
  .sr{order:3;width:100%!important}
  .bell{width:48px;height:48px}
  .prof{padding:4px 12px 4px 4px}
- .dd,.dd[style]{position:fixed!important;left:auto;right:max(12px,env(safe-area-inset-right));top:calc(env(safe-area-inset-top,0) + 68px)!important;width:min(320px,calc(100vw - 24px))!important;max-height:70dvh;overflow:auto;z-index:12}
- /* headings & spacing */
+ .tb .dd,.tb .dd[style]{position:fixed!important;left:auto;right:max(16px,env(safe-area-inset-right));top:calc(env(safe-area-inset-top,0) + 72px)!important;width:min(320px,calc(100vw - 32px))!important;max-height:70dvh;overflow:auto;z-index:25}
+ /* --- headings, cards, grids --- */
  h1{font-size:34px;line-height:38px}
  h2{font-size:28px;line-height:32px}
  .card{padding:18px}
  .ph{align-items:flex-start;margin-bottom:16px}
- .st{padding:16px}.st-n{font-size:36px;line-height:40px}
+ .ph>.b,.ph>div>.b{height:48px;font-size:18px}
  .stats{gap:12px;margin-bottom:16px}
- .panels,.cg,.sg,.mg,.g2{grid-template-columns:1fr!important;gap:16px}
- /* inputs: 16px stops iOS zoom-on-focus */
+ .st{padding:16px}.st-n{font-size:34px;line-height:38px}
+ .panels,.cg,.sg,.mg,.g2{grid-template-columns:minmax(0,1fr)!important;gap:16px}
+ /* --- inputs and buttons --- */
  input,select,textarea{font-size:16px!important}
  .b{height:52px;font-size:20px}
  .sm,.b.sm{height:44px;min-width:44px}
  .mvb{width:44px;height:44px}
  .la{opacity:1!important}
- /* tabs scroll sideways */
- .tabs{display:flex;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs span{flex:none;white-space:nowrap}
- .sg>.card:first-child{display:flex;overflow-x:auto;gap:4px;scrollbar-width:none}.sg>.card:first-child .nv{flex:none;white-space:nowrap}
- /* toast above tab bar */
- #tg{bottom:calc(96px + env(safe-area-inset-bottom,0));max-width:calc(100vw - 32px);width:max-content;text-align:center;border-radius:20px}
- /* modals become bottom sheets */
- .ov{align-items:end!important;place-items:end center;padding:0!important;animation:scrim .25s ease both}
+ /* --- segmented tabs: full width, equal segments --- */
+ .tabs{display:flex;width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-bottom:16px}
+ .tabs::-webkit-scrollbar{display:none}
+ .tabs span{flex:1 1 0;min-width:max-content;text-align:center;padding:10px 14px;white-space:nowrap}
+ .sg>.card:first-child{display:flex;flex-direction:row;overflow-x:auto;gap:4px;scrollbar-width:none;padding:10px}
+ .sg>.card:first-child::-webkit-scrollbar{display:none}
+ .sg>.card:first-child .nv{flex:none;white-space:nowrap;height:44px}
+ /* --- toast, modals as sheets --- */
+ #tg{bottom:calc(92px + env(safe-area-inset-bottom,0));max-width:calc(100vw - 32px);width:max-content;text-align:center;border-radius:20px}
+ .ov{align-items:end!important;place-items:end center;padding:0!important}
  .ov .card.ac{width:100%!important;max-height:88dvh;overflow:auto;border-radius:32px 32px 0 0!important;padding:28px 20px calc(24px + env(safe-area-inset-bottom,0))!important;animation:sheet .35s cubic-bezier(.32,.72,0,1) both}
  .ov .card.ac::before{content:"";display:block;width:40px;height:5px;border-radius:99px;background:var(--dv);margin:-14px auto 14px}
- @keyframes sheet{from{transform:translateY(100%)}to{transform:none}}@keyframes scrim{from{opacity:0}to{opacity:1}}
- /* invoice wizard line items */
+ @keyframes sheet{from{transform:translateY(100%)}to{transform:none}}
  .li.lh{display:none}
  .li{grid-template-columns:1fr 1fr 1fr 44px;row-gap:6px;margin-bottom:14px}.li>input:first-child{grid-column:1/-1}
  .wz{padding:20px}.obc{padding:24px 18px}
- /* messages */
- .mg2{height:auto!important;gap:12px}
- .cvl{display:flex;gap:8px;overflow-x:auto;padding:10px!important;scrollbar-width:none}.cvl .sr{display:none}
- .cv{flex:none;width:210px}
- .cvc{height:calc(100dvh - 340px);min-height:380px}
- .mw .msg{max-width:84%}
- .cmp{padding:12px 14px}
- /* CRM */
+ /* --- messages --- */
+ .mg2{grid-template-columns:minmax(0,1fr)!important;height:auto!important;gap:12px}
+ .cvl{display:flex;gap:8px;overflow-x:auto;padding:10px!important;scrollbar-width:none}
+ .cvl::-webkit-scrollbar{display:none}
+ .cvl .sr{display:none}
+ .cv{flex:none;width:auto;min-width:210px;max-width:280px}
+ .cv .t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .cvc{min-height:0!important;height:calc(100dvh - 330px - env(safe-area-inset-bottom,0));max-height:640px;min-height:380px!important}
+ .cvh{padding:12px 16px}
+ .thr{padding:14px}
+ .msg{max-width:84%}
+ .cmp{padding:10px 12px;gap:8px}
+ .sendb{width:52px;min-width:52px;height:52px}
+ /* --- CRM --- */
  #ctp,#csr{width:100%!important;flex:1 1 140px}
  .kc{padding:14px!important}
- /* landing */
- .nav{margin:10px;padding:10px 14px}.nav>div:nth-child(2){display:none}.nav .b{height:44px;font-size:18px;padding:0 16px}
- .hero{padding:16px}
- #features,#how,.g4[style*="40px"]{padding-left:16px!important;padding-right:16px!important}
+ /* --- public pages --- */
+ .nav{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:max(10px,env(safe-area-inset-top,0)) 10px 8px!important;padding:12px 14px!important;border-radius:28px!important}
+ .nav>b.lg{order:1;font-size:26px!important;line-height:30px}
+ .nav>div:last-child{order:2;gap:8px!important;flex-wrap:nowrap!important}
+ .nav>div:nth-child(2){order:3;display:flex!important;flex:1 0 100%;flex-wrap:nowrap!important;overflow-x:auto;gap:2px!important;scrollbar-width:none;border-top:1px solid var(--dv);padding-top:6px}
+ .nav>div:nth-child(2)::-webkit-scrollbar{display:none}
+ .nav .nv{flex:none;height:40px!important;padding:0 12px!important;white-space:nowrap;font-size:14px}
+ .nav .b{height:42px!important;font-size:18px!important;padding:0 16px!important}
+ .hero{padding:12px 16px 24px!important;gap:20px!important}
+ .hero h1{font-size:clamp(40px,12vw,64px)!important}
  .toplg{top:calc(16px + env(safe-area-inset-top,0))}
  .rcs{gap:14px}
+ @media(prefers-reduced-transparency:reduce){.sb{background:var(--sf);-webkit-backdrop-filter:none;backdrop-filter:none}}
+ @media(prefers-reduced-motion:reduce){.more,.ov .card.ac{animation:none!important}}
 }
-/* tables become stacked cards on phones */
 @media(max-width:700px){
  .tw{overflow-x:visible}
  .tw table,.tw tbody{display:block}
@@ -276,28 +301,37 @@ a,button,.b,.nv,[data-go],[data-act],[data-tab],[data-crm],input,select,textarea
  .tw td::before{content:attr(data-l);color:var(--mu);font:700 12px/16px Inter,sans-serif;text-align:left;flex:none}
  .tw td[data-l=""]::before,.tw td:first-child::before{content:none}
  .tw td:first-child{justify-content:flex-start;text-align:left}
- .tw tr[data-go]:active{background:var(--fd)}
- .stats{grid-template-columns:repeat(2,1fr)!important}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
  .st-t{gap:8px}.st-l{font-size:11px}.st .chip{width:36px;height:36px}
 }
-@media(max-width:360px){.stats{grid-template-columns:1fr!important}}
+@media(max-width:360px){.stats{grid-template-columns:minmax(0,1fr)!important}}
 @media(hover:none){.lc:hover{transform:none}}
 
-/* landing nav on phones: logo + buttons on one row, links as a swipe strip */
 @media(max-width:900px){
- .nav{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin:max(10px,env(safe-area-inset-top,0)) 10px 8px!important;padding:12px 14px!important;border-radius:28px!important}
- .nav>b.lg{order:1;font-size:26px!important;line-height:30px}
- .nav>div:last-child{order:2;gap:8px!important;flex-wrap:nowrap!important}
- .nav>div:nth-child(2){order:3;display:flex!important;flex:1 0 100%;flex-wrap:nowrap!important;overflow-x:auto;gap:2px!important;scrollbar-width:none;border-top:1px solid var(--dv);padding-top:6px}
- .nav>div:nth-child(2)::-webkit-scrollbar{display:none}
- .nav .nv{flex:none;height:40px!important;padding:0 12px!important;white-space:nowrap;font-size:14px}
- .nav .b{height:42px!important;font-size:18px!important;padding:0 16px!important}
- .hero{padding:12px 16px 24px!important;gap:20px!important}
- .hero h1{font-size:clamp(40px,12vw,64px)!important}
+ .ph{flex-wrap:nowrap!important;align-items:center!important;gap:10px}
+ .ph>:first-child{min-width:0}
+ .ph h1,.ph h2{font-size:30px;line-height:34px}
+ .ph .b{height:44px!important;font-size:16px!important;padding:0 16px!important;flex:none;white-space:nowrap}
+ .nav>div:last-child .b{height:40px!important;font-size:16px!important;padding:0 14px!important}
+ .nav>b.lg{font-size:24px!important}
+}
+
+.g4 .row{justify-content:flex-start}
+@media(max-width:900px){
+ .g4[style]{padding-left:16px!important;padding-right:16px!important}
+ .nav>div:nth-child(2){justify-content:space-between}
+ .nav>div:nth-child(2) .nv{padding:0 8px!important;font-size:13px;gap:4px}
+}
+
+@media(max-width:900px){
+ .top:not(.tb){flex-wrap:nowrap!important;align-items:center!important;gap:10px;margin-bottom:16px}
+ .top:not(.tb)>:first-child{min-width:0}
+ .top:not(.tb) h1,.top:not(.tb) h2{font-size:30px;line-height:34px}
+ .top:not(.tb)>.b,.top:not(.tb)>div>.b{height:44px!important;font-size:16px!important;padding:0 16px!important;flex:none;white-space:nowrap}
 }
 </style></head><body><div id="app"></div><input type="file" id="fu" multiple hidden><div id="ov"></div><div id="tg" role="status"></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script><script>window.WORKCLAY={url:'https://iraizodwncvmbybowtvi.supabase.co',key:'sb_publishable_R-JewbaH1TAYgCHV_YdsfA_k0gPxFyP'};</script><script>
 const $=s=>document.querySelector(s),v=i=>($('#'+i)||{}).value||'',fmt=n=>'₹'+n.toLocaleString('en-IN');
-const I={d:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',p:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>',c:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',i:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h8M8 17h8"/>',w:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',m:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',s:'<path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',h:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',b:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a2 2 0 0 0 3.4 0"/>',k:'<path d="M20 6 9 17l-5-5"/>',u:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',x:'<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>',v:'<path d="m6 9 6 6 6-6"/>'};
+const I={more:'<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',d:'<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>',p:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.6 3.9A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/>',c:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',i:'<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M8 13h8M8 17h8"/>',w:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',m:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',s:'<path d="M4 6h10M18 6h2M4 12h2M10 12h10M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',h:'<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',b:'<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a2 2 0 0 0 3.4 0"/>',k:'<path d="M20 6 9 17l-5-5"/>',u:'<path d="M12 16V4M7 9l5-5 5 5M4 20h16"/>',x:'<circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/>',v:'<path d="m6 9 6 6 6-6"/>'};
 Object.assign(I,{"w": "<path d=\"M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1\"/><path d=\"M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4\"/>", "cd": "<rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M2 10h20\"/>", "q": "<circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/>", "cal": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/>", "a": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 8v4M12 16h.01\"/>", "m": "<path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"/>", "ph": "<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/>", "pin": "<path d=\"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/>", "ar": "<path d=\"m12 19-7-7 7-7\"/><path d=\"M19 12H5\"/>", "n": "<path d=\"m22 2-7 20-4-9-9-4z\"/><path d=\"M22 2 11 13\"/>", "bf": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\"/><rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\"/>", "up": "<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4\"/><path d=\"m17 8-5-5-5 5\"/><path d=\"M12 3v12\"/>", "ml": "<rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/><path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"/>", "lk": "<rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/>", "u": "<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M20 21a8 8 0 0 0-16 0\"/>", "ey": "<path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>", "cc": "<path d=\"M21.8 10A10 10 0 1 1 17 3.3\"/><path d=\"m9 11 3 3L22 4\"/>"});
 Object.assign(I,{"pen": "<path d=\"M21.2 5.9l-3.1-3.1a1.5 1.5 0 0 0-2.1 0L3 15.8V21h5.2L21.2 8a1.5 1.5 0 0 0 0-2.1z\"/><path d=\"m15 5 4 4\"/>", "shd": "<path d=\"M20 13c0 5-3.5 7.5-7.7 8.97a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\"/>", "clk": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/>", "lnk": "<path d=\"M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71\"/><path d=\"M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71\"/>", "bk": "<rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\"/><path d=\"M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01\"/>", "hs": "<path d=\"M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3\"/>"});
 Object.assign(I,{"bug":'<path d="m8 2 1.88 1.88"/><path d="M14.12 3.88 16 2"/><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"/><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"/><path d="M12 20v-9"/><path d="M6 13H2"/><path d="M22 13h-4"/>',"bkm":'<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',"out":'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/>',"clip":'<path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/>'});
@@ -328,7 +362,7 @@ const explain=x=>{const m=(x&&x.message)||String(x==null?'':x);if(/rate limit|er
 const toast=(t,err)=>{const x=explain(t);if(x!==t)err=1;const e=$('#tg');e.textContent=x;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',err?7000:2400)};
 const nav=()=>[['dash','d','Dashboard'],['projects','p','Projects'],...(S.r=='f'?[['clients','c','Clients'],['crm','crm','CRM']]:[]),['invoices','i','Invoices'],['payments','w','Payments'],['messages','m','Messages']];
 const tbar=()=>`<div class="top tb"><div class="logo mlogo" data-go="dash"><i class="orb"></i><span>Workclay</span></div><div class="sr">${ic('q')}<input id="q" placeholder="Search..." aria-label="Search"></div><div class="acct"><button class="bell" data-act="dd:n" aria-label="Notifications">${ic('b')}</button><div class="prof" data-act="dd:u" tabindex="0"><span class="av">${esc((nm()||'?').trim().charAt(0))}</span><span>${esc(nm()||'Account')}</span>${ic('v')}</div></div>${S.dd=='n'?`<div class="card dd"><h3>Notifications</h3>${notifs().length?notifs().slice(0,4).map(n=>`<div class="row" data-go="${n.g}" style="cursor:pointer"><div><b>${esc(n.t)}</b><div class="mu">${esc(n.s)}</div></div></div>`).join('')+`<p style="margin-top:8px"><a style="color:var(--pt);font-weight:600;cursor:pointer" data-go="notifications">View all</a></p>`:'<p class="mu" style="margin-top:8px">You are all caught up. New activity shows up here.</p>'}</div>`:''}${S.dd=='u'?`<div class="card dd" style="width:240px"><div class="nv" data-go="profile">Profile</div><div class="nv" data-go="settings">Settings</div><div class="nv" data-go="help">Help & support</div><div class="nv" data-act="theme">Switch theme</div><div class="nv" data-act="lo">Log out</div></div>`:''}</div>`;
-const shell=(a,c)=>`<div class="app"><aside class="card sb"><div class="logo" data-go=""><i class="orb"></i><span>Workclay</span></div>${nav().map(n=>`<div class="nv ${n[0]==a?'on':''}" data-go="${n[0]}" tabindex="0">${ic(n[1])}${n[2]}</div>`).join('')}<div style="flex:1"></div><div class="nv ${a=='settings'?'on':''}" data-go="settings" tabindex="0">${ic('s')}Settings</div><div class="nv ${a=='help'?'on':''}" data-go="help" tabindex="0">${ic('h')}Help & Support</div></aside><main>${tbar()}${c}</main></div>`;
+const shell=(a,c)=>{const N=nav(),pr=['dash','projects','invoices','payments','messages'],sec=N.filter(n=>!pr.includes(n[0])),it=n=>`<div class="nv ${n[0]==a?'on':''} ${pr.includes(n[0])?'':'sec'}" data-go="${n[0]}" tabindex="0">${ic(n[1])}<span>${n[2]}</span></div>`;return `<div class="app"><aside class="card sb"><div class="logo" data-go=""><i class="orb"></i><span>Workclay</span></div>${N.map(it).join('')}${sec.length?`<div class="nv mnv ${S.dd=='m'||sec.some(n=>n[0]==a)?'on':''}" data-act="dd:m" tabindex="0">${ic('more')}<span>More</span></div>`:''}<div class="sp" style="flex:1"></div><div class="nv ft ${a=='settings'?'on':''}" data-go="settings" tabindex="0">${ic('s')}<span>Settings</span></div><div class="nv ft ${a=='help'?'on':''}" data-go="help" tabindex="0">${ic('h')}<span>Help & Support</span></div></aside><main>${tbar()}${c}</main>${S.dd=='m'?`<div class="more-scrim" data-act="dd:m"></div><div class="card more">${sec.map(n=>`<div class="nv ${n[0]==a?'on':''}" data-go="${n[0]}" tabindex="0">${ic(n[1])}<span>${n[2]}</span></div>`).join('')}${sec.length?'<hr>':''}<div class="nv ${a=='settings'?'on':''}" data-go="settings" tabindex="0">${ic('s')}<span>Settings</span></div><div class="nv ${a=='help'?'on':''}" data-go="help" tabindex="0">${ic('h')}<span>Help & Support</span></div></div>`:''}</div>`};
 const ago=t=>{if(!t)return'';const m=Math.max(1,Math.round((Date.now()-new Date(t))/6e4));return m<60?m+(m==1?' minute':' minutes')+' ago':m<1440?Math.round(m/60)+(Math.round(m/60)==1?' hour':' hours')+' ago':Math.round(m/1440)+(Math.round(m/1440)==1?' day':' days')+' ago'};
 const mdy=d=>{if(!d)return'';return new Date(d+'T00:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'})};
 const st=(l,n,s,i,t)=>`<div class="card st"><div class="st-t"><span class="st-l">${l}</span><i class="chip t-${t}">${ic(i)}</i></div><div class="st-n">${n}</div><div class="st-s">${s}</div></div>`;
